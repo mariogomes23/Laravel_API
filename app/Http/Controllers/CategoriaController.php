@@ -74,4 +74,25 @@ class CategoriaController extends Controller
         ],204);
         //
     }
+
+    public function produtos($id)
+    {
+       if(!$categoria = $this->categoria->with("produtos")->find($id))
+
+       {
+        return response()->json([
+            "error"=>"sem categoria disponivel",
+
+        ]);
+       }
+
+       $produtos = $categoria->produtos;
+
+
+        return response()->json([
+            "categoria"=>$categoria,
+            "produtos"=>$produtos
+        ]);
+
+    }
 }

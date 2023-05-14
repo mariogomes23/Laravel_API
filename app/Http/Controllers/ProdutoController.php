@@ -95,7 +95,7 @@ class ProdutoController extends Controller
         "categoria_id"=>$request->categoria_id,
         "descricao" =>$request->descricao
        ]);
-    
+       
 
         return response()->json($produtos,201);
 

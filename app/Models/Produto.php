@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Produto extends Model
 {
     use HasFactory;
-    
+
     protected $fillable =["nome","descricao","image","categoria_id"];
 
     public function getResult($nome){
@@ -18,6 +18,11 @@ class Produto extends Model
 
         }
        return  $this->where("nome","LIKE","%{$nome}%")->get();
+    }
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class);
     }
 
 }
